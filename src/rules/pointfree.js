@@ -4,7 +4,7 @@ export default {
   meta: {
     docs: {
       description: "Prefer pointfree definitions of functions",
-      category: "Fill me in",
+      category: "General",
       recommended: false,
     },
     fixable: null,
