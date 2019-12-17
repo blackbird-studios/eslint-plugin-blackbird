@@ -1,0 +1,5 @@
+imports:
+whitelist:
+  - directory: src/
+    allowed: [filename, named]
+    prefix: ""
