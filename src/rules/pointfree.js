@@ -1,4 +1,7 @@
 import { isIdentifier, isCallExpression } from "utils"
+import { includes, concat } from "lodash/fp"
+
+const defaultBlacklist = ["parseInt"]
 
 export default {
   meta: {
@@ -10,13 +13,16 @@ export default {
     fixable: null,
     schema: [],
   },
-  create: context => {
+  create: ({ report: contextReport, settings = {} }) => {
     const report = node => {
-      context.report({
+      contextReport({
         node,
         message: "Prefer pointfree definitions of functions",
       })
     }
+
+    const userBlacklist = settings["pointfree/blacklist"] ?? []
+    const completeBlacklist = concat(defaultBlacklist)(userBlacklist)
 
     return {
       ArrowFunctionExpression: node => {
@@ -35,6 +41,13 @@ export default {
         }
 
         const callExpression = node.body
+
+        if (
+          isIdentifier(callExpression.callee) &&
+          includes(callExpression.callee.name)(completeBlacklist)
+        ) {
+          return
+        }
 
         if (callExpression.arguments.length !== 1) {
           return

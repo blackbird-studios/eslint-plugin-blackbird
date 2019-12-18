@@ -36,16 +36,11 @@ Then configure the rules you want to use under the rules section.
 ```json
 {
     "rules": {
-        "blackbird/rule-name": 2
+        "blackbird/pointfree": "error"
     }
 }
 ```
 
 ## Supported Rules
 
-* Fill in provided rules here
-
-
-
-
-
+* [pointfree](docs/rules/pointfree.md)

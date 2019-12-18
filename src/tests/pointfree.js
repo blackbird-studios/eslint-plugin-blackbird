@@ -4,14 +4,13 @@ import rule from "rules/pointfree"
 
 const tests = {
   valid: [
+    { code: "const f = g" },
+    { code: "const f = x => g(1, x)" },
+    { code: "const f = x => g(x)(y)" },
+    { code: "const f = x => parseInt(x)" },
     {
-      code: "const f = g",
-    },
-    {
-      code: "const f = x => g(1, x)",
-    },
-    {
-      code: "const f = x => g(x)(y)",
+      code: "const f = x => g(x)",
+      settings: { "pointfree/blacklist": ["g"] },
     },
   ],
   invalid: [
