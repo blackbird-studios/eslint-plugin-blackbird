@@ -11,7 +11,7 @@
   "main": "lib/index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "test": "mocha lib/tests --recursive",
+    "test": "yarn build && mocha lib/tests --recursive",
     "lint": "eslint --cache \"src/**/**.js\""
   },
   "dependencies": {
