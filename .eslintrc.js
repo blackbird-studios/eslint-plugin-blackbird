@@ -7,7 +7,7 @@ module.exports = {
       "modules": true
     }
   },
-  plugins: ["known-imports"],
+  plugins: ["prettier", "known-imports"],
   extends: ["plugin:prettier/recommended", "plugin:known-imports/recommended"],
   rules: {
     "object-shorthand": ["error", "properties"],
@@ -20,6 +20,9 @@ module.exports = {
   },
   settings: {
     "known-imports/blank-line-before-local-imports": true
+  },
+  env: {
+    node: true
   }
 }
 
