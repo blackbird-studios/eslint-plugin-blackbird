@@ -1,0 +1,7 @@
+imports:
+  includes: lodash/fp
+  concat: lodash/fp
+whitelist:
+  - directory: src/
+    allowed: [filename, named]
+    prefix: ""
